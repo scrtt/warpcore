@@ -5,7 +5,12 @@
 #include "wifi.h"
 
 void setup() {
-  // put your setup code here, to run once:
+  Serial.begin(9600);
+
+  // Connect to Wifi
+  Serial.println("Connecting to ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
 }
 
 void loop() {

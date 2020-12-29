@@ -24,6 +24,7 @@ void setup()
     Serial.print(".");
   }
 
+  //noch ein Kommentar
   Serial.println("");
   Serial.println("WiFi connected");
   Serial.print("my IP: ");

@@ -4,14 +4,13 @@
 #include "wifi.h"
 #include <FS.h>
 #include "ESPAsyncWebServer.h"
-FS *filesystem = &SPIFFS;
 
 AsyncWebServer server(80);
 
 void setup()
 {
   Serial.begin(9600);
-  filesystem->begin();
+  SPIFFS.begin();
 
   // connect to wifi
   Serial.println("Connecting to ");
@@ -42,4 +41,5 @@ void setup()
 
 void loop()
 {
+  Serial.println("hallo_timmy");
 }

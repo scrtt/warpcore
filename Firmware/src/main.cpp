@@ -41,5 +41,5 @@ void setup()
 
 void loop()
 {
-  Serial.println("hallo_timmy");
+
 }

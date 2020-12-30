@@ -5,7 +5,6 @@
 #include <FS.h>
 #include "ESPAsyncWebServer.h"
 
-
 AsyncWebServer server(80);
 
 void setup()
@@ -17,14 +16,13 @@ void setup()
   Serial.println("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);
-//kacke
+
   while (WiFi.status() != WL_CONNECTED)
   {
     delay(1000);
     Serial.print(".");
   }
 
-  //noch ein Kommentar 123
   Serial.println("");
   Serial.println("WiFi connected");
   Serial.print("my IP: ");

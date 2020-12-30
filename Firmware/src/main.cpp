@@ -7,6 +7,16 @@
 
 AsyncWebServer server(80);
 
+  String processor(const String& var)
+  {
+  if(var == "HEADLINE")
+  {
+    String headline ="<h1>Hallo</h1>";
+    return headline;
+  }
+  return String();
+}
+
 void setup()
 {
   Serial.begin(9600);
@@ -31,9 +41,11 @@ void setup()
   WiFi.macAddress(macAddr);
   Serial.printf("mac address: %02x:%02x:%02x:%02x:%02x:%02x\n", macAddr[0], macAddr[1], macAddr[2], macAddr[3], macAddr[4], macAddr[5]);
 
+
+
   //starting webserver
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send(SPIFFS, "/index.html", String(), false);
+    request->send(SPIFFS, "/index.html", String(), false, processor);
   });
 
   server.begin();

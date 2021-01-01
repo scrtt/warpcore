@@ -9,7 +9,7 @@
 #include <Adafruit_NeoPixel.h>
 
 #define LED_PIN 4
-#define NUM_LEDS 5
+#define NUM_LEDS 4
 #define COLOR_ORDER GRB
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUM_LEDS, LED_PIN);
@@ -30,7 +30,7 @@ void setup()
 {
   //init leds
   pixels.begin();
-  pixels.setPixelColor(1, pixels.Color(255, 255, 255));
+
   pixels.show();
 
   Serial.begin(9600);
@@ -65,4 +65,12 @@ void setup()
 
 void loop()
 {
+  for (int i = 0; i < NUM_LEDS; i++)
+  {
+    pixels.setPixelColor(i, pixels.Color(0, 0, 255));
+    pixels.show();
+    delay(80);
+    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+    pixels.show();
+  }
 }

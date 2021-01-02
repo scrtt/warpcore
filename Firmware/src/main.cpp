@@ -27,7 +27,7 @@ String processor(const String &var)
 void setup()
 {
   //init leds
-  FastLED.addLeds<WS2812B, LED_PIN>(leds, NUM_LEDS);
+  FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
 
   Serial.begin(9600);
   SPIFFS.begin();
@@ -63,9 +63,9 @@ void loop()
 {
   for (int i = 0; i < NUM_LEDS; i++)
   {
-   
+
     fadeToBlackBy(leds, NUM_LEDS, 135);
-    leds[i] = CRGB::Blue;
+    leds[i] = CRGB::Red;
     FastLED.show();
     delay(30);
   }

@@ -10,9 +10,9 @@
 
 #define LED_PIN 4
 #define NUM_LEDS 37
-CRGB leds[NUM_LEDS];
 
 AsyncWebServer server(80);
+CRGB leds[NUM_LEDS];
 
 String processor(const String &var)
 {
@@ -59,14 +59,32 @@ void setup()
   server.begin();
 }
 
-void loop()
+void warpCoreAnimation()
 {
-  for (int i = 0; i < NUM_LEDS; i++)
+  for (int i = NUM_LEDS - 1; i > 31; --i)
   {
-
     fadeToBlackBy(leds, NUM_LEDS, 135);
-    leds[i] = CRGB::Red;
+    leds[i] = CRGB::Blue;
     FastLED.show();
     delay(30);
   }
+
+  for (int i = 1; i <= 15; i++)
+  {
+    fadeToBlackBy(leds, NUM_LEDS, 135);
+    leds[i - 1] = CRGB::Blue;
+    leds[32 - i] = CRGB::Blue;
+    FastLED.show();
+    delay(30);
+  }
+  fadeToBlackBy(leds, NUM_LEDS, 135);
+  leds[15] = CRGB::White;
+  leds[16] = CRGB::White;
+  FastLED.show();
+  delay(60);
+}
+
+void loop()
+{
+  warpCoreAnimation();
 }

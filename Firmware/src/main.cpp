@@ -1,18 +1,16 @@
 #include <Arduino.h>
 
 #include <ESP8266WiFi.h>
-
 #include "wifi.h"
+
 #include <FS.h>
 #include "ESPAsyncWebServer.h"
 
-#include <Adafruit_NeoPixel.h>
+#include "FastLED.h"
 
 #define LED_PIN 4
-#define NUM_LEDS 4
-#define COLOR_ORDER GRB
-
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUM_LEDS, LED_PIN);
+#define NUM_LEDS 37
+CRGB leds[NUM_LEDS];
 
 AsyncWebServer server(80);
 
@@ -29,9 +27,7 @@ String processor(const String &var)
 void setup()
 {
   //init leds
-  pixels.begin();
-
-  pixels.show();
+  FastLED.addLeds<WS2812B, LED_PIN>(leds, NUM_LEDS);
 
   Serial.begin(9600);
   SPIFFS.begin();
@@ -67,10 +63,10 @@ void loop()
 {
   for (int i = 0; i < NUM_LEDS; i++)
   {
-    pixels.setPixelColor(i, pixels.Color(0, 0, 255));
-    pixels.show();
-    delay(80);
-    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
-    pixels.show();
+   
+    fadeToBlackBy(leds, NUM_LEDS, 135);
+    leds[i] = CRGB::Blue;
+    FastLED.show();
+    delay(30);
   }
 }

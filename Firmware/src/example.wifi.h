@@ -1,9 +1,5 @@
 //Rename to wifi.h
-
-#ifndef __CREDENTIALS_H__
-#define __CREDENTIALS_H__
+#pragma once
 
 const char* ssid = "SSID";
 const char* password = "key";
-
-#endif

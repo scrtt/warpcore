@@ -5,8 +5,8 @@
 class ledanimations final
 {
 private:
-    size_t num_leds;
-    CRGB leds[37];
+    static constexpr size_t num_leds{37U};
+    CRGB leds[num_leds];
 
 public:
     ledanimations();

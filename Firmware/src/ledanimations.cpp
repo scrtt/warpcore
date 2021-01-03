@@ -1,14 +1,13 @@
 #include "ledanimations.h"
 
-ledanimations::ledanimations() :
-num_leds(37)
+ledanimations::ledanimations()
 {
   FastLED.addLeds<WS2812B, 4, GRB>(leds, num_leds);
 }
 
 void ledanimations::warpcore()
 {
-  for (int i = 37 - 1; i > 31; --i)
+  for (int i = num_leds - 1; i > 31; --i)
   {
     fadeToBlackBy(leds, num_leds, 135);
     leds[i] = CRGB::Blue;

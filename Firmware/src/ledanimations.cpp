@@ -15,11 +15,11 @@ void ledanimations::warpcore()
     delay(30);
   }
 
-  for (int i = 1; i <= 15; i++)
+  for (int i = 0; i < 15; i++)
   {
     fadeToBlackBy(leds, num_leds, 135);
-    leds[i - 1] = CRGB::Blue;
-    leds[32 - i] = CRGB::Blue;
+    leds[i] = CRGB::Blue;
+    leds[31 - i] = CRGB::Blue;
     FastLED.show();
     delay(30);
   }

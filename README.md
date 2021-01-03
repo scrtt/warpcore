@@ -1,14 +1,14 @@
 # Warpcore
 Star Trek Lamp
 
-#Web Adresses
+# Web Adresses
 ###### Toggle Lamp on
 `http://<WARPCORE_ADDRESS>/on`
 
 ###### Toggle Lamp off
 `http://<WARPCORE_ADDRESS>/off`
 
-#FHEM Cconfig
+# FHEM Cconfig
 ```
 define warpcore dummy
 attr warpcore setList on:noArg off:noArg

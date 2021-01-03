@@ -26,12 +26,12 @@ webserver::webserver()
     });
 
     server.on("/on", HTTP_GET, [&](AsyncWebServerRequest *request) {
-        webserver::lightOn = true;
+        lightOn = true;
         request->send(200, "text/plain", "ok");
     });
 
     server.on("/off", HTTP_GET, [&](AsyncWebServerRequest *request) {
-        webserver::lightOn = false;
+        lightOn = false;
         request->send(200, "text/plain", "ok");
     });
 

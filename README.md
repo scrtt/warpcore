@@ -8,7 +8,7 @@ Star Trek Lamp
 ###### Toggle Lamp off
 `http://<WARPCORE_ADDRESS>/off`
 
-# FHEM Cconfig
+# FHEM Config
 ```
 define warpcore dummy
 attr warpcore setList on:noArg off:noArg

@@ -12,7 +12,6 @@ Star Trek Lamp
 ```
 define warpcore dummy
 attr warpcore setList on:noArg off:noArg
-attr warpcore event-on-change-reading state
 
 define n_warpcore notify warpcore:(on|off) {if($EVENT eq "on"){GetFileFromURL("http://<WARPCORE_ADDRESS>/on")}else{GetFileFromURL("http://<WARPCORE_ADDRESS>/off")}}
 ```

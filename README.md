@@ -2,8 +2,10 @@
 Star Trek Lamp
 
 #Web Adresses
-###### Toggle Lamp on/off
+###### Toggle Lamp on
 `http://<WARPCORE_ADDRESS>/on`
+
+###### Toggle Lamp off
 `http://<WARPCORE_ADDRESS>/off`
 
 #FHEM Cconfig

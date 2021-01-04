@@ -11,10 +11,13 @@ private:
     void warpcore();
     void animation_1();
     void animation_2();
+    uint8_t gHue;
 
 public:
     ledanimations();
     void blackout();
     void switchOn();
     void setAnimation(int);
+    void addgHue();
+    
 };

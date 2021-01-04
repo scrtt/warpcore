@@ -39,6 +39,7 @@ void setup()
 
 void loop()
 {
+  EVERY_N_MILLISECONDS( 20 ) { light.addgHue(); }
   if(httpsrv->getLightState())
   {
     light.setAnimation(httpsrv->getActiveAnimation());

@@ -17,7 +17,7 @@ namespace
 } // namespace
 
 webserver::webserver()
-    : server(80), lightOn(true)
+    : server(80), lightOn(true), animation(1)
 {
     SPIFFS.begin();
 
@@ -35,10 +35,25 @@ webserver::webserver()
         request->send(200, "text/plain", "ok");
     });
 
+    server.on("/warpcore", HTTP_GET, [&](AsyncWebServerRequest *request) {
+        animation = 1;
+        request->send(200, "text/plain", "animation 1");
+    });
+    
+    server.on("/warpcore2", HTTP_GET, [&](AsyncWebServerRequest *request) {
+        animation = 2;
+        request->send(200, "text/plain", "animation 2");
+    });
+
     server.begin();
 }
 
 bool webserver::getLightState()
 {
     return lightOn;
+}
+
+int webserver::getActiveAnimation()
+{
+    return animation;
 }

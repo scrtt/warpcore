@@ -35,14 +35,19 @@ webserver::webserver()
         request->send(200, "text/plain", "ok");
     });
 
-    server.on("/warpcore", HTTP_GET, [&](AsyncWebServerRequest *request) {
+    server.on("/warpcore1", HTTP_GET, [&](AsyncWebServerRequest *request) {
         animation = 1;
-        request->send(200, "text/plain", "animation 1");
+        request->send(200, "text/plain", "ok");
     });
-    
+
     server.on("/warpcore2", HTTP_GET, [&](AsyncWebServerRequest *request) {
         animation = 2;
-        request->send(200, "text/plain", "animation 2");
+        request->send(200, "text/plain", "ok");
+    });
+
+    server.on("/warpcore3", HTTP_GET, [&](AsyncWebServerRequest *request) {
+        animation = 3;
+        request->send(200, "text/plain", "ok");
     });
 
     server.begin();

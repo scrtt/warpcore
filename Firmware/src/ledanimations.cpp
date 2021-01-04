@@ -32,6 +32,44 @@ void ledanimations::warpcore()
 
 void ledanimations::blackout()
 {
-  fill_solid( leds, num_leds, CRGB(0,0,0));
+  fill_solid(leds, num_leds, CRGB(0, 0, 0));
   FastLED.show();
 }
+
+void ledanimations::animation_1()
+{
+  fill_solid(leds, num_leds, CRGB(120, 120, 120));
+  FastLED.show();
+}
+
+void ledanimations::animation_2()
+{
+  fill_solid(leds, num_leds, CRGB(0, 50, 120));
+  FastLED.show();
+}
+
+void ledanimations::setAnimation(int animation)
+{
+  activeAnimation = animation;
+}
+
+void ledanimations::switchOn()
+{
+  switch (activeAnimation)
+  {
+  case 1:
+    warpcore();
+    break;
+
+  case 2:
+    animation_1();
+    break;
+
+  case 3:
+    animation_2();
+    break;
+
+  default:
+    warpcore();
+  }
+} 

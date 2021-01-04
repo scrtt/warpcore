@@ -41,7 +41,8 @@ void loop()
 {
   if(httpsrv->getLightState())
   {
-    light.warpcore();
+    light.setAnimation(httpsrv->getActiveAnimation());
+    light.switchOn();
   }
   else
   {

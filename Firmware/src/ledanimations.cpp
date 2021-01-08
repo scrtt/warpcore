@@ -1,35 +1,38 @@
 #include "ledanimations.h"
 
 ledanimations::ledanimations()
-: gHue(0)
+    : gHue(0)
 {
   FastLED.addLeds<WS2812B, 4, GRB>(leds, num_leds);
 }
 
 void ledanimations::warpcore()
 {
+
   for (int i = num_leds - 1; i > 31; --i)
   {
+
+    if (i == 35 && a == true)
+    {
+      leds[15] = CRGB::White;
+      leds[16] = CRGB::White;
+      FastLED.show();
+    }
     fadeToBlackBy(leds, num_leds, 135);
     leds[i] = CRGB::Blue;
     FastLED.show();
-    delay(30);
+    FastLED.delay(80);
   }
 
   for (int i = 0; i < 15; i++)
   {
+    a = true;
     fadeToBlackBy(leds, num_leds, 135);
     leds[i] = CRGB::Blue;
     leds[31 - i] = CRGB::Blue;
     FastLED.show();
-    delay(30);
+    FastLED.delay(80);
   }
-  fadeToBlackBy(leds, num_leds, 135);
-  FastLED.show();
-  leds[15] = CRGB::White;
-  leds[16] = CRGB::White;
-  FastLED.show();
-  delay(60);
 }
 
 void ledanimations::blackout()
@@ -46,8 +49,8 @@ void ledanimations::animation_1()
 
 void ledanimations::animation_2()
 {
- fill_rainbow( leds, num_leds, gHue, 7);
- FastLED.show();
+  fill_rainbow(leds, num_leds, gHue, 7);
+  FastLED.show();
 }
 
 void ledanimations::setAnimation(int animation)
@@ -57,7 +60,7 @@ void ledanimations::setAnimation(int animation)
 
 void ledanimations::addgHue()
 {
-  gHue = gHue+1;
+  gHue = gHue + 1;
 }
 
 void ledanimations::switchOn()
@@ -79,4 +82,4 @@ void ledanimations::switchOn()
   default:
     warpcore();
   }
-} 
+}

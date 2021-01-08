@@ -8,7 +8,7 @@ namespace
     {
         if (var == "HEADLINE")
         {
-            String headline = "Hallo";
+            String headline = "LCARS";
             return headline;
         }
         return String();

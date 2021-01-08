@@ -21,11 +21,27 @@ webserver::webserver()
 {
     SPIFFS.begin();
 
-    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
+    server.on("/", HTTP_GET, [&](AsyncWebServerRequest *request) {
         request->send(SPIFFS, "/index.html", String(), false, processor);
+        int paramsNr = request->params();
+        for (int i = 0; i < paramsNr; i++)
+        {
+            AsyncWebParameter *p = request->getParam(i);
+            if (p->name() == "state")
+            {
+                if(p->value() == "on")
+                {
+                    lightOn = true;
+                }
+                else
+                {
+                    lightOn = false;
+                }  
+            }
+        }
     });
 
-     server.on("/css/lcars.min.css", HTTP_GET, [](AsyncWebServerRequest *request) {
+    server.on("/css/lcars.min.css", HTTP_GET, [](AsyncWebServerRequest *request) {
         request->send(SPIFFS, "/css/lcars.min.css", String(), false);
     });
 

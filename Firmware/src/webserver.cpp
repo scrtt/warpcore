@@ -25,6 +25,10 @@ webserver::webserver()
         request->send(SPIFFS, "/index.html", String(), false, processor);
     });
 
+     server.on("/css/lcars.min.css", HTTP_GET, [](AsyncWebServerRequest *request) {
+        request->send(SPIFFS, "/css/lcars.min.css", String(), false);
+    });
+
     server.on("/on", HTTP_GET, [&](AsyncWebServerRequest *request) {
         lightOn = true;
         request->send(200, "text/plain", "ok");

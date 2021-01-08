@@ -8,7 +8,7 @@ namespace
     {
         if (var == "HEADLINE")
         {
-            String headline = "<h1>Hallo</h1>";
+            String headline = "Hallo";
             return headline;
         }
         return String();

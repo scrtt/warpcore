@@ -12,6 +12,7 @@ private:
     void animation_1();
     void animation_2();
     uint8_t gHue;
+    bool a = false;
 
 public:
     ledanimations();
@@ -19,5 +20,4 @@ public:
     void switchOn();
     void setAnimation(int);
     void addgHue();
-    
 };

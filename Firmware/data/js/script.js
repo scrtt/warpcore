@@ -2,6 +2,7 @@
 
 let baseurl = window.location.origin+window.location.pathname
 let state = "on"
+let animation = "warpcore"
 $(document).ready(function(){ 
     refresh()
     $("#onButton").click(function(){
@@ -28,11 +29,33 @@ $(document).ready(function(){
             updateLamp()
         }
     })
+
+    $("#wpAniButton").click(function(){
+        if(animation != "warpcore"){
+            animation = "warpcore"
+            updateLamp()
+        }
+    })
+
+    $("#vsAniButton").click(function(){
+        if(animation != "versammlung"){
+            animation = "versammlung"
+            updateLamp()
+        }
+    })
+
+    $("#rbAniButton").click(function(){
+        if(animation != "rainbow"){
+            animation = "rainbow"
+            updateLamp()
+        }
+    })
+
 }); 
 
 function updateLamp()
 {
-    $.get(baseurl+"control/?state="+state, function(data){
+    $.get(baseurl+"control/?state="+state+"&animation="+animation, function(data){
         updateUi(data)
     });
 }

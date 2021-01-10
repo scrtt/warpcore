@@ -45,6 +45,10 @@ webserver::webserver()
         request->send(SPIFFS, "/css/lcars.min.css", String(), false);
     });
 
+    server.on("/js/script.js", HTTP_GET, [](AsyncWebServerRequest *request) {
+        request->send(SPIFFS, "/js/script.js", String(), false);
+    });
+
     server.on("/on", HTTP_GET, [&](AsyncWebServerRequest *request) {
         lightOn = true;
         request->send(200, "text/plain", "ok");

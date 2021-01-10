@@ -55,11 +55,7 @@ webserver::webserver()
             }
         }
 
-        String response = "{";
-        response += "\"state\": \""+boolToString(lightOn)+"\"";
-        response += "}";
-
-        request->send(200, "text/json", response);
+        request->send(200, "text/json", getJSON());
     });
 
     server.on("/css/lcars.min.css", HTTP_GET, [](AsyncWebServerRequest *request) {
@@ -106,4 +102,13 @@ bool webserver::getLightState()
 int webserver::getActiveAnimation()
 {
     return animation;
+}
+
+String webserver::getJSON()
+{
+    String json = "{";
+    json += "\"state\": \""+boolToString(lightOn)+"\"";
+    json += "}";
+
+    return json;
 }

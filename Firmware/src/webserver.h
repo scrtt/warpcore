@@ -8,6 +8,7 @@ private:
     AsyncWebServer server;
     bool lightOn;
     int animation;
+    String getJSON();
 public:
     webserver();
     bool getLightState();

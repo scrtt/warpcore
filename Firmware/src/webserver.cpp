@@ -53,6 +53,21 @@ webserver::webserver()
                     lightOn = false;
                 }  
             }
+            if (p->name() == "animation")
+            {
+                if(p->value() == "warpcore")
+                {
+                    animation = 1;
+                }
+                if(p->value() == "versammlung")
+                {
+                    animation = 2;
+                }
+                if(p->value() == "rainbow")
+                {
+                    animation = 3;
+                }
+            }
         }
 
         request->send(200, "text/json", getJSON());

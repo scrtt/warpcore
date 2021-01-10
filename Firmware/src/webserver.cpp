@@ -14,6 +14,18 @@ namespace
         return String();
     }
 
+    String boolToString(const bool &bo)
+    {
+        if(bo)
+        {
+            return "true";
+        }
+        else
+        {
+            return "false";
+        }
+        
+    }
 } // namespace
 
 webserver::webserver()
@@ -42,7 +54,12 @@ webserver::webserver()
                 }  
             }
         }
-        request->send(200, "text/plain", "ok");
+
+        String response = "{";
+        response += "\"state\": \""+boolToString(lightOn)+"\"";
+        response += "}";
+
+        request->send(200, "text/json", response);
     });
 
     server.on("/css/lcars.min.css", HTTP_GET, [](AsyncWebServerRequest *request) {

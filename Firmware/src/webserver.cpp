@@ -23,6 +23,9 @@ webserver::webserver()
 
     server.on("/", HTTP_GET, [&](AsyncWebServerRequest *request) {
         request->send(SPIFFS, "/index.html", String(), false, processor);
+    });
+
+    server.on("/control", HTTP_GET, [&](AsyncWebServerRequest *request) {
         int paramsNr = request->params();
         for (int i = 0; i < paramsNr; i++)
         {
@@ -39,6 +42,7 @@ webserver::webserver()
                 }  
             }
         }
+        request->send(200, "text/plain", "ok");
     });
 
     server.on("/css/lcars.min.css", HTTP_GET, [](AsyncWebServerRequest *request) {

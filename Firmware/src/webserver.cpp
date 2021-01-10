@@ -18,11 +18,11 @@ namespace
     {
         if(bo)
         {
-            return "true";
+            return "on";
         }
         else
         {
-            return "false";
+            return "off";
         }
         
     }

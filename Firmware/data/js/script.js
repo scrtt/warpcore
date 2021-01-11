@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 let baseurl = window.location.origin+window.location.pathname
 let state = "on"
@@ -70,6 +70,7 @@ function refresh()
 function updateUi(data)
 {
     switchUiState(data.state)
+    switchUiAnimation(data.animation)
 }
 
 function disableButton(button){
@@ -78,6 +79,32 @@ function disableButton(button){
 
 function enableButton(button){
     $(button).removeClass("lcars-gray-bg").addClass("button");
+}
+
+function highlightButton(button){
+    $(button).removeClass("button").addClass("lcars-hopbush-bg");
+}
+
+function normailzeButton(button){
+    $(button).removeClass("lcars-hopbush-bg").addClass("button");
+}
+
+function switchUiAnimation(uianimation){
+    if(uianimation == "warpcore"){
+        highlightButton("#wpAniButton")
+        normailzeButton("#vsAniButton")
+        normailzeButton("#rbAniButton")
+    }
+    if(uianimation == "versammlung"){
+        highlightButton("#vsAniButton")
+        normailzeButton("#wpAniButton")
+        normailzeButton("#rbAniButton")
+    }
+    if(uianimation == "rainbow"){
+        highlightButton("#rbAniButton")
+        normailzeButton("#wpAniButton")
+        normailzeButton("#vsAniButton")
+    }
 }
 
 function switchUiState(uistate){

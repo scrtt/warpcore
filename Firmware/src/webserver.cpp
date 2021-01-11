@@ -16,7 +16,7 @@ namespace
 
     String boolToString(const bool &bo)
     {
-        if(bo)
+        if (bo)
         {
             return "on";
         }
@@ -24,7 +24,27 @@ namespace
         {
             return "off";
         }
-        
+    }
+
+    String getAnimationName(const int name)
+    {
+        switch (name)
+        {
+        case 1:
+            return "warpcore";
+            break;
+
+        case 2:
+            return "versammlung";
+            break;
+
+        case 3:
+            return "rainbow";
+            break;
+
+        default:
+            return "warpcore";
+        }
     }
 } // namespace
 
@@ -44,26 +64,26 @@ webserver::webserver()
             AsyncWebParameter *p = request->getParam(i);
             if (p->name() == "state")
             {
-                if(p->value() == "on")
+                if (p->value() == "on")
                 {
                     lightOn = true;
                 }
                 else
                 {
                     lightOn = false;
-                }  
+                }
             }
             if (p->name() == "animation")
             {
-                if(p->value() == "warpcore")
+                if (p->value() == "warpcore")
                 {
                     animation = 1;
                 }
-                if(p->value() == "versammlung")
+                if (p->value() == "versammlung")
                 {
                     animation = 2;
                 }
-                if(p->value() == "rainbow")
+                if (p->value() == "rainbow")
                 {
                     animation = 3;
                 }
@@ -122,7 +142,8 @@ int webserver::getActiveAnimation()
 String webserver::getJSON()
 {
     String json = "{";
-    json += "\"state\": \""+boolToString(lightOn)+"\"";
+    json += "\"state\": \"" + boolToString(lightOn) + "\", ";
+    json += "\"animation\": \"" + getAnimationName(animation) + "\"";
     json += "}";
 
     return json;

@@ -14,6 +14,7 @@ private:
     uint8_t gHue;
 
     int activeAnimation;
+    int warpDelay;
     void warpcore();
     void animation_1();
     void animation_2();

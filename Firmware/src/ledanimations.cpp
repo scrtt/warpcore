@@ -5,6 +5,7 @@ ledanimations::ledanimations()
     , leds2(leds(15, 16))
     , leds3(leds(17, 36))
     , gHue(0)
+    , warpDelay(80)
 {
   FastLED.addLeds<WS2812B, 4, GRB>(leds, NUM_LEDS);
 }
@@ -14,7 +15,7 @@ void ledanimations::warpcore()
 
   for (int i = NUM_LEDS - 1; i > 31; --i)
   {
-    if (i <= 34)
+    if (i <= 32)
     {
       leds2.fadeToBlackBy(60);
       FastLED.show();
@@ -24,17 +25,22 @@ void ledanimations::warpcore()
     leds1.fadeToBlackBy(135);
     leds[i] = CRGB::Blue;
     FastLED.show();
-    FastLED.delay(80);
+    FastLED.delay(warpDelay);
   }
 
   for (int i = 0; i < 15; i++)
   {
+    if (i < 5)
+    {
+      leds2.fadeToBlackBy(60);
+      FastLED.show();
+    }
     leds1.fadeToBlackBy(135);
     leds3.fadeToBlackBy(135);
     leds[i] = CRGB::Blue;
     leds[31 - i] = CRGB::Blue;
     FastLED.show();
-    FastLED.delay(80);
+    FastLED.delay(warpDelay);
 
     if (i == 13)
     {
@@ -52,21 +58,14 @@ void ledanimations::blackout()
 
 void ledanimations::animation_1()
 {
-  leds3.fill_solid(CRGB::Blue);
-  FastLED.show();
-  delay(1000);
-  leds1.fill_solid(CRGB::Blue);
-  FastLED.show();
-  delay(2000);
-  leds3.fadeToBlackBy(250);
-  FastLED.show();
-  delay(3000);
+leds.fill_solid(CRGB(255, 255, 120));
+FastLED.show();
 }
 
 void ledanimations::animation_2()
-{ /*
-  fill_rainbow(leds, num_leds, gHue, 7);
-  FastLED.show();*/
+{ 
+  fill_rainbow(leds, NUM_LEDS, gHue, 7);
+  FastLED.show();
 }
 
 void ledanimations::setAnimation(int animation)
